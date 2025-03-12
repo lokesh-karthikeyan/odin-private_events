@@ -1,24 +1,5 @@
-# README
+# The Odin Project - Private Events
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It's a project related to `Active Record Associations`.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A *User* can create one (or) more *Events* and multiple users can also attend more than one *Event*.
