@@ -5,6 +5,8 @@ class EventsController < ApplicationController
 
   def new = (@event = current_user.created_events.build)
 
+  def show = (@event = Event.find(params[:id]))
+
   def create
     @event = current_user.created_events.build(event_params)
 
