@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [ :new, :create ]
+
   def index = (@event = Event.all)
 
-  def new = (@event = Event.new)
+  def new = (@event = current_user.created_events.build)
 
   def create
     @event = current_user.created_events.build(event_params)
