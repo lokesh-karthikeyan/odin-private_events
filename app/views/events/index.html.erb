@@ -1,0 +1,24 @@
+<div
+  style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 2rem; background-color: coral; border: solid 2px #000"
+>
+  <h1>Welcome to Private Events!</h1>
+  <div style="display: flex; gap: 1rem">
+    <%= button_to "Create Event", new_event_path, method: :get %>
+    <% if user_signed_in? %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= button_to "Log in", new_user_session_path, method: :get %>
+    <% end %>
+  </div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap">
+  <% @event.each do |event| %>
+    <div
+      style="background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000; max-width: 300px"
+    >
+      <h4><%= event.title %></h4><hr>
+      <p><%= event.description %></p>
+    </div>
+  <% end %>
+</div>
