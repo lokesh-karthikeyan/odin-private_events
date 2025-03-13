@@ -1,17 +1,42 @@
-<div
-  style="background-color: coral; text-align: center; padding: 0.5rem; border: solid 2px #000; border-bottom: none"
->
-  <h1><%= @event.title %></h1>
-</div>
+<div>
+  <div>
+    <div
+      style="background-color: coral; text-align: center; padding: 0.5rem; border: solid 2px #000; border-bottom: none"
+    >
+      <h1><%= @event.title %></h1>
+    </div>
 
-<div
-  style="background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000; border-bottom: none"
->
-  <p><%= @event.description %></p>
-</div>
-<div
-  style="display: flex; justify-content: space-between; background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000;"
->
-  <p style="font-weight: bold"><%= @event.location %></p>
-  <p style="font-style: italic"><%= @event.date %></p>
+    <div
+      style="background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000; border-bottom: none"
+    >
+      <p><%= @event.description %></p>
+    </div>
+    <div
+      style="display: flex; justify-content: space-between; background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000;"
+    >
+      <p style="font-weight: bold"><%= @event.location %></p>
+      <p style="font-style: italic"><%= @event.date %></p>
+    </div>
+  </div>
+  <div style="margin-top: 20px">
+    <% unless @event.attendees.include?(current_user) %>
+      <%= button_to "Attend", invitations_path(event_id: @event.id), method: :post %>
+    <% end %>
+  </div>
+
+  <% if @event.attendees.any? %>
+    <div
+      style="background-color: coral; text-align: center; padding: 0.5rem; border: solid 2px #000; display: flex; justify-content: space-around; align-items: center"
+    >
+      <h3>
+        Attendees
+      </h3>
+      <%= button_to "Disregard", invitation_path(event_id: @event.id), method: :delete %>
+    </div>
+    <ol style="border-bottom: solid 2px #000;">
+      <% @event.attendees.each do |attendee| %>
+        <li><%= attendee.email %></li>
+      <% end %>
+    </ol>
+  <% end %>
 </div>
