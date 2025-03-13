@@ -1,6 +1,8 @@
 <div style= "display: flex; flex-wrap: wrap; gap: 2rem">
+  <div>
+  <h2>Created Events</h2>
   <% @events.each do |event| %>
-    <div style="flex-basis: 1 1 300px">
+    <div style="flex-basis: 1 1 300px; margin-bottom: 10px">
       <div
         style="background-color: coral; text-align: center; padding: 0.5rem; border: solid 2px #000; border-bottom: none"
       >
@@ -19,4 +21,25 @@
       </div>
     </div>
   <% end %>
+  </div>
+
+  <div>
+    <h2>Attendee Events</h2>
+    <div style="display: flex; gap: 2rem">
+      <div>
+        <h3>Past Events</h3>
+        <% current_user.attended_events.past.each do |event| %>
+          <li><%= link_to event.title, event_path(event) %></li>
+        <% end %>
+      </div>
+      <div>
+        <h3>Upcoming Events</h3>
+        <% current_user.attended_events.upcoming.each do |event| %>
+          <ul>
+            <li><%= link_to event.title, event_path(event) %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
