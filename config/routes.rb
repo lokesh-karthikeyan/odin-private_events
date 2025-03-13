@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get "user/:id", to: "users#show", as: :show_hosted_events
-
+  resources :users, only: [ :show ]
   resources :events
+  resources :invitations
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
