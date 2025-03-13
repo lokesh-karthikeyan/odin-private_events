@@ -5,6 +5,7 @@
   <div style="display: flex; gap: 1rem">
     <%= button_to "Create Event", new_event_path, method: :get %>
     <% if user_signed_in? %>
+      <%= button_to "My Events", user_path(current_user), method: :get %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= button_to "Log in", new_user_session_path, method: :get %>
