@@ -12,13 +12,34 @@
   </div>
 </div>
 
-<div style="display: flex; flex-wrap: wrap">
-  <% @event.each do |event| %>
-    <div
-      style="background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000; max-width: 300px"
-    >
-      <h4><%= event.title %></h4><hr>
-      <p><%= event.description %></p>
-    </div>
-  <% end %>
+<div>
+  <h2>Past Events</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+    <% @event.past.each do |event| %>
+      <div
+        style="background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000; flex-basis: 300px"
+      >
+        <h4><%= event.title %></h4><hr>
+        <p><%= event.description %></p><hr>
+        <div style="display: flex; justify-content: space-between; font-weight: bold">
+          <%= link_to "More details..", event, method: :get %>
+        </div>
+      </div>
+    <% end %>
+  </div><hr>
+
+  <h2>Upcoming Events</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem">
+    <% @event.upcoming.each do |event| %>
+      <div
+        style="background-color: #ccc; padding: 0.5rem 2rem; border: solid 2px #000; flex-basis: 300px"
+      >
+        <h4><%= event.title %></h4><hr>
+        <p><%= event.description %></p><hr>
+        <div style="display: flex; justify-content: space-between; font-weight: bold">
+          <%= link_to "More details..", event, method: :get %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
